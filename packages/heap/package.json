@@ -1,5 +1,5 @@
 {
-  "name": "@easy-ds/core",
+  "name": "@easy-data-structure-js/heap",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -13,10 +13,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "vitest",
     "clean": "rm -rf dist"
   },
-  "devDependencies": {
-    "typescript": "workspace:*",
-    "vite": "workspace:*"
-  }
+  "devDependencies": {}
 }

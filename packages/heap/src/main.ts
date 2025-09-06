@@ -1,24 +1,27 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { Heap } from "./heap.js";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+let heap = new Heap((a, b) => {
+  if (a[1] === b[1]) {
+    return b[0].localeCompare(a[0]);
+  }
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  return a[1] - b[1];
+});
+// heap.insert(["a", 10]);
+// heap.insert(["b", 20]);
+// heap.insert(["c", 30]);
+// heap.insert(["d", 40]);
+
+heap.withConstantCount(1, ["ac", 40]);
+heap.withConstantCount(1, ["ac", 30]);
+
+// heap.build([
+//   ["a", 20],
+//   ["b", 20],
+//   ["c", 30],
+//   ["d", 40],
+// ]);
+
+while (heap.size > 0) {
+  console.log(heap.remove());
+}
