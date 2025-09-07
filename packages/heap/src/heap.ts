@@ -1,17 +1,12 @@
-interface HeapItem extends Array<any> {
-  0: any; // key
-  1: number; // value
-}
+type Comparator<T> = (a: T, b: T) => number;
 
-type Comparator<T = HeapItem> = (a: T, b: T) => number;
-
-export class Heap {
-  private heapList: Array<HeapItem>;
+export class Heap<T = [any, number]> {
+  private heapList: Array<T>;
   private heapSize: number = 0;
-  private comparator: Comparator;
+  private comparator: Comparator<T>;
 
-  constructor(comparator: Comparator = (a, b) => a[1] - b[1]) {
-    this.heapList = [0 as unknown as HeapItem]; // adding a dummy element at index 0
+  constructor(comparator: Comparator<T>) {
+    this.heapList = [0 as unknown as T]; // adding a dummy element at index 0
     this.comparator = comparator;
   }
 
@@ -51,10 +46,7 @@ export class Heap {
   /**
    * 往堆中插入一个元素
    */
-  insert(value: HeapItem) {
-    if (!Array.isArray(value)) {
-      throw new Error("Value must be an array, like [key, value]");
-    }
+  insert(value: T) {
 
     this.heapList.push(value);
     this.heapSize += 1;
@@ -127,7 +119,7 @@ export class Heap {
    * @param {number} count
    * @param {Array} item
    */
-  withConstantCount(count: number, item: HeapItem) {
+  withConstantCount(count: number, item: T) {
     if (this.heapSize < count) {
       this.insert(item);
     } else if (this.comparator(item, this.findMax()) > 0) {
@@ -159,7 +151,7 @@ export class Heap {
   /**
    * 根据给定的数组构建最大堆 heapify
    */
-  build(arrayList: Array<HeapItem>) {
+  build(arrayList: Array<T>) {
     const len = arrayList.length;
 
     this.heapSize = len;
