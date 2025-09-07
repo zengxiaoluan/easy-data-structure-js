@@ -1,6 +1,7 @@
 {
   "name": "@easy-data-structure-js/heap",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A TypeScript implementation of heap data structure",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,11 +11,32 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "heap",
+    "data-structure",
+    "typescript",
+    "priority-queue"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/easy-data-structure-js.git",
+    "directory": "packages/heap"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {}
 }

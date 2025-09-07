@@ -1,28 +1,38 @@
+interface HeapItem extends Array<any> {
+  0: any; // key
+  1: number; // value
+}
+
+type Comparator<T = HeapItem> = (a: T, b: T) => number;
+
 export class Heap {
-  constructor(comparator = (a, b) => a[1] - b[1]) {
-    this.heapList = [0]; // adding a dummy element at index 0
-    this.heapSize = 0;
+  private heapList: Array<HeapItem>;
+  private heapSize: number = 0;
+  private comparator: Comparator;
+
+  constructor(comparator: Comparator = (a, b) => a[1] - b[1]) {
+    this.heapList = [0 as unknown as HeapItem]; // adding a dummy element at index 0
     this.comparator = comparator;
   }
 
   /**
    * 某个节点的左节点索引
    */
-  _leftChildIndex(index) {
+  private _leftChildIndex(index: number) {
     return index * 2;
   }
 
   /**
    * 某个节点的右节点索引
    */
-  _rightChildIndex(index) {
+  private _rightChildIndex(index: number) {
     return index * 2 + 1;
   }
 
   /**
    * 某个节点的父节点索引
    */
-  _parentIndex(index) {
+  private _parentIndex(index: number) {
     return Math.floor(index / 2);
   }
 
@@ -30,14 +40,18 @@ export class Heap {
     return this.heapSize;
   }
 
+  isEmpty() {
+    return this.size === 0;
+  }
+
   getHeapList() {
-    return this.heapList;
+    return structuredClone(this.heapList);
   }
 
   /**
    * 往堆中插入一个元素
    */
-  insert(value) {
+  insert(value: HeapItem) {
     if (!Array.isArray(value)) {
       throw new Error("Value must be an array, like [key, value]");
     }
@@ -48,7 +62,7 @@ export class Heap {
     this._moveUp(this.heapSize);
   }
 
-  _moveUp(position) {
+  private _moveUp(position: number) {
     while (this._parentIndex(position) > 0) {
       const parent = this._parentIndex(position);
 
@@ -68,8 +82,6 @@ export class Heap {
    * 获取堆中最大的元素，但不删除它
    */
   findMax() {
-    if (this.heapSize === 0) return null;
-
     return this.heapList[1];
   }
 
@@ -88,7 +100,7 @@ export class Heap {
     return maxValue;
   }
 
-  _moveDown(parentPosition) {
+  _moveDown(parentPosition: number) {
     while (this._leftChildIndex(parentPosition) <= this.heapSize) {
       const maxChildPosition = this._findMaxChild(parentPosition);
 
@@ -115,7 +127,7 @@ export class Heap {
    * @param {number} count
    * @param {Array} item
    */
-  withConstantCount(count, item) {
+  withConstantCount(count: number, item: HeapItem) {
     if (this.heapSize < count) {
       this.insert(item);
     } else if (this.comparator(item, this.findMax()) > 0) {
@@ -127,7 +139,7 @@ export class Heap {
   /**
    * 获取最大的子节点索引
    */
-  _findMaxChild(position) {
+  private _findMaxChild(position: number) {
     const leftChild = this._leftChildIndex(position);
     const rightChild = this._rightChildIndex(position);
 
@@ -147,11 +159,11 @@ export class Heap {
   /**
    * 根据给定的数组构建最大堆 heapify
    */
-  build(arrayList) {
+  build(arrayList: Array<HeapItem>) {
     const len = arrayList.length;
 
     this.heapSize = len;
-    this.heapList = [0, ...arrayList];
+    this.heapList = [0 as any, ...arrayList];
 
     let position = this._parentIndex(len);
 

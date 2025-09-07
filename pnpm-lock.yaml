@@ -20,6 +20,19 @@ importers:
 
   packages/heap: {}
 
+  packages/playground:
+    dependencies:
+      '@easy-data-structure-js/heap':
+        specifier: workspace:*
+        version: link:../heap
+    devDependencies:
+      typescript:
+        specifier: ~5.8.3
+        version: 5.8.3
+      vite:
+        specifier: ^7.1.2
+        version: 7.1.4
+
 packages:
 
   '@esbuild/aix-ppc64@0.25.9':
