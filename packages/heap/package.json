@@ -28,11 +28,11 @@
     "typescript",
     "priority-queue"
   ],
-  "author": "Your Name",
+  "author": "zengxiaoluan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/easy-data-structure-js.git",
+    "url": "https://github.com/zengxiaoluan/easy-data-structure-js.git",
     "directory": "packages/heap"
   },
   "publishConfig": {
