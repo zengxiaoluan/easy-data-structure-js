@@ -1,6 +1,6 @@
 {
   "name": "@easy-data-structure-js/heap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript implementation of heap data structure",
   "type": "module",
   "main": "./dist/index.js",
