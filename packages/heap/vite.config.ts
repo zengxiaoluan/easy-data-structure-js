@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
-import dts from 'vite-plugin-dts';
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
-  plugins: [dts()],
+  plugins: [dts({ exclude: ['**/*.spec.ts', '**/*.test.ts'] })],
   build: {
     lib: {
       entry: "src/index.ts",
       name: "Heap",
       fileName: "index",
+      formats: ["es", "cjs", "umd", "iife", "system"],
     },
     rollupOptions: {
       external: [],

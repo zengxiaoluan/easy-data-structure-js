@@ -1,6 +1,6 @@
 {
   "name": "easy-data-structure-js",
-  "description": "A collection of high-performance data structures implemented in JavaScript/TypeScript",
+  "description": "A collection of high-performance and easy-to-use data structures implemented in JavaScript/TypeScript",
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -19,6 +19,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "vitest",
+    "bench": "vitest bench",
     "clean": "rm -rf dist",
     "prepublishOnly": "pnpm build"
   },
