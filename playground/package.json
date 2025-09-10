@@ -10,7 +10,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@easy-data-structure-js/heap": "workspace:*"
+    "@easy-data-structure-js/heap": "workspace:*",
+    "monaco-editor": "^0.52.2"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
