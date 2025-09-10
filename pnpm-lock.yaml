@@ -41,6 +41,9 @@ importers:
       '@easy-data-structure-js/heap':
         specifier: workspace:*
         version: link:../packages/heap
+      '@easy-data-structure-js/trie':
+        specifier: workspace:*
+        version: link:../packages/trie
       monaco-editor:
         specifier: ^0.52.2
         version: 0.52.2

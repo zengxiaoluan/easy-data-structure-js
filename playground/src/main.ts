@@ -1,4 +1,6 @@
 import { Heap } from '@easy-data-structure-js/heap';
+import { Trie } from '@easy-data-structure-js/trie';
+
 import * as monaco from 'monaco-editor';
 
 (self as any).MonacoEnvironment = {
@@ -26,18 +28,29 @@ function clearOutput() {
 }
 
 const defaultCode = `// Heap example
-const heap = new Heap<number>((a, b) => a - b);
+const heap = new Heap((a, b) => a - b);
 
 heap.insert(10);
 heap.insert(5);
 heap.insert(20);
 
-log('Heap size: ' + heap.size);
-log('Min element: ' + heap.findMax());
+console.log('Heap size: ' + heap.size);
+console.log('Min element: ' + heap.findMax());
 
 while (heap.size > 0) {
-  log('Removed: ' + heap.remove());
-}`;
+  console.log('Removed: ' + heap.remove());
+}
+
+// Trie example
+const trie = new Trie();
+
+trie.insert('apple');
+trie.insert('app');
+trie.insert('application');
+
+console.log('Search "app": ' + trie.search('app'));
+console.log('Search "apple": ' + trie.search('apple'));
+console.log('Starts with "app": ' + trie.startsWith('app'));`;
 
 const editor = monaco.editor.create(document.getElementById('codeEditor')!, {
   value: defaultCode,
@@ -50,19 +63,27 @@ const editor = monaco.editor.create(document.getElementById('codeEditor')!, {
 
 runBtn.addEventListener('click', () => {
   clearOutput();
+
   try {
     const code = editor.getValue();
+
     const wrappedCode = `
       (function() {
         ${code}
       })()
     `;
+
+    let originalLog = console.log;
+    console.log = log;
+
     eval(wrappedCode);
+
+    console.log = originalLog;
   } catch (error: any) {
     log('Error: ' + error.message);
   }
 });
 
-// Make Heap available globally for the editor
+// Make data structures available globally for the editor
 (window as any).Heap = Heap;
-(window as any).log = log;
+(window as any).Trie = Trie;
