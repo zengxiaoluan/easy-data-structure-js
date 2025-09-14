@@ -36,6 +36,12 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(rollup@4.50.0)(typescript@5.8.3)(vite@7.1.4)
 
+  packages/union-find:
+    devDependencies:
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(rollup@4.50.0)(typescript@5.8.3)(vite@7.1.4)
+
   playground:
     dependencies:
       '@easy-data-structure-js/heap':
