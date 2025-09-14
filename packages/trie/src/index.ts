@@ -38,4 +38,24 @@ export class Trie {
     }
     return true;
   }
+
+  /**
+   * Find the lowest head string in the trie that matches the given word.
+   * @param word to be searched word
+   * @returns
+   */
+  findLowestHeadStr(word: string) {
+    let node = this.root;
+    let str = '';
+    for (const char of word) {
+      if (!node.children.has(char)) {
+        return word;
+      }
+
+      str += char;
+      node = node.children.get(char)!;
+
+      if (node.isEndOfWord) return str;
+    }
+  }
 }

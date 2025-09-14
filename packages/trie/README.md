@@ -6,6 +6,9 @@ A TypeScript implementation of trie (prefix tree) data structure.
 
 ```bash
 npm install @easy-data-structure-js/trie
+
+# or
+pnpm add @easy-data-structure-js/trie
 ```
 
 ## Usage
@@ -32,10 +35,26 @@ console.log(trie.startsWith('xyz')); // false
 ## API
 
 ### `insert(word: string): void`
+
 Inserts a word into the trie.
 
 ### `search(word: string): boolean`
+
 Returns true if the word is in the trie.
 
 ### `startsWith(prefix: string): boolean`
+
 Returns true if there is any word in the trie that starts with the given prefix.
+
+### `findLowestHeadStr(word: string): string`
+
+Finds the shortest prefix of the given word that exists as a complete word in the trie. Returns the original word if no prefix matches.
+
+```typescript
+const trie = new Trie();
+trie.insert('app');
+trie.insert('appl');
+
+console.log(trie.findLowestHeadStr('application')); // 'app'
+console.log(trie.findLowestHeadStr('banana')); // 'banana'
+```
