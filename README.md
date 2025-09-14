@@ -3,3 +3,4 @@
 - [Heap](./packages/heap/README.md)
 - [Dancing links](./packages/dancing-links/README.md)
 - [Trie](./packages/trie/README.md)
+- [Union Find](./packages/union-find/README.md)
