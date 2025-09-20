@@ -1,0 +1,45 @@
+{
+  "name": "@easy-data-structure-js/2-3-tree",
+  "version": "1.0.0",
+  "description": "A TypeScript implementation of 2-3 tree data structure",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm test && tsc && vite build",
+    "test": "vitest",
+    "bench": "vitest bench",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "2-3-tree",
+    "balanced-tree",
+    "data-structure",
+    "typescript"
+  ],
+  "author": "zengxiaoluan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zengxiaoluan/easy-data-structure-js.git",
+    "directory": "packages/2-3-tree"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
