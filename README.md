@@ -4,3 +4,4 @@
 - [Dancing links](./packages/dancing-links/README.md)
 - [Trie](./packages/trie/README.md)
 - [Union Find](./packages/union-find/README.md)
+- [2-3 tree](./packages/2-3-tree/README.md)
