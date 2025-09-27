@@ -5,3 +5,4 @@
 - [Trie](./packages/trie/README.md)
 - [Union Find](./packages/union-find/README.md)
 - [2-3 tree](./packages/2-3-tree/README.md)
+- [Dynamic Array](./packages/dynamic-array/README.md)
